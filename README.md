@@ -17,7 +17,7 @@
 [![Status](https://img.shields.io/badge/Status-In%20Development-orange?style=for-the-badge)]()
 [![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20Windows%20%7C%20macOS-informational?style=for-the-badge)]()
 
-> [!] Fast, passive Azure infrastructure enumeration for cloud attack surface mapping.
+ [!] Fast, passive Azure infrastructure enumeration for cloud attack surface mapping.
 
 </div>
 
