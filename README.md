@@ -1,13 +1,6 @@
 <div align="center">
 
-```
-                                     
-      ▄▄▄▄   ▄▄▄▄▄▄▄▄▄                   
-    ▄██▀▀██▄ ▀▀▀▀▀████                   
-    ███  ███    ▄███▀  ▄█▀█▄ ██ ██ ▄█▀▀▀ 
-    ███▀▀███  ▄███▀    ██▄█▀ ██ ██ ▀███▄ 
-    ███  ███ █████████ ▀█▄▄▄ ▀██▀█ ▄▄▄█▀ 
-```
+![AZeus](screenshots/img1.png)
 
 # AZeus
 
@@ -17,7 +10,7 @@
 [![Status](https://img.shields.io/badge/Status-In%20Development-orange?style=for-the-badge)]()
 [![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20Windows%20%7C%20macOS-informational?style=for-the-badge)]()
 
-> [!] Fast, passive Azure infrastructure enumeration for cloud attack surface mapping.
+ Fast, passive Azure infrastructure enumeration for cloud attack surface mapping.
 
 </div>
 
@@ -25,7 +18,7 @@
 
 **[!] IN DEVELOPMENT** AZeus is actively being built. The current release covers subdomain enumeration and public blob container discovery. More modules are on the way, see the [Roadmap](#roadmap).
 
-**[!] LEGAL** This tool is for authorized security testing, CTFs, and educational purposes only. Unauthorized enumeration may violate Microsoft's Terms of Service and applicable law. Always obtain explicit written permission before running AZeus against any target.
+**[!] DISCLAIMER** This tool is for authorized security testing, CTFs, and educational purposes only. Unauthorized enumeration may violate Microsoft's Terms of Service and applicable law. Always obtain explicit written permission before running AZeus against any target.
 
 ---
 
