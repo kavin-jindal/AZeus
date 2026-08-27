@@ -92,7 +92,7 @@ Just a target name.
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/AZeus.git
+git clone https://github.com/kavin-jindal/AZeus.git
 cd AZeus
 
 # Install dependencies
