@@ -104,22 +104,48 @@ pip install -r requirements.txt
 ## [>] Usage
 
 ```bash
-python main.py
+# Subdomain & service enumeration only (default)
+python main.py -t contoso
+
+# Positional argument also supported
+python main.py contoso
+
+# Enumerate containers only (skips subdomains)
+python main.py -t contoso -c
+
+# Use a custom wordlist for container discovery
+python main.py -t contoso -c -w path/to/wordlist.txt
+
+# Test a single specific container directly
+python main.py -t contoso --container backups
+
+# Enumerate BOTH subdomains and containers
+python main.py -t contoso --all
+
+# Suppress banner (quiet mode)
+python main.py -t contoso --no-banner
 ```
 
-You will be prompted to enter a target name:
+### CLI Options
 
-```
-[?] Enter target name>> contoso
-```
+| Flag | Argument | Description |
+|---|---|---|
+| `-h`, `--help` | | Show help message and exit |
+| `-t`, `--target` | `TARGET` | Target name / organization prefix (e.g., `contoso`) |
+| `TARGET` | | Positional fallback for target name |
+| `-c`, `--containers` | | Enumerate public Blob Storage containers only (skips subdomain scan) |
+| `--container` | `NAME` | Check a single specific container name for public access |
+| `-w`, `--wordlist` | `PATH` | Custom wordlist path for container discovery (default: `wordlist.txt`) |
+| `--all` | | Enumerate both subdomains and containers |
+| `--no-banner` | | Suppress the ASCII art banner |
 
 **Example output:**
 
 ```
 [!] Valid Services and Subdomains
 
-[+] Blob Storage              -> contoso.blob.core.windows.net
-[+] App Service / Functions   -> contoso.azurewebsites.net
+[+] Blob Storage                        ->  contoso.blob.core.windows.net
+[+] App Service / Functions             ->  contoso.azurewebsites.net
 
 [!] Discovered Containers
 
@@ -147,8 +173,8 @@ The following modules are **planned for future releases**:
 - [ ] **AKS / Kubernetes API server probing**
 - [ ] **JSON / HTML report export**
 - [ ] **Multi-threaded scanning** for faster enumeration
-- [ ] **Custom wordlist support** via CLI flags
-- [ ] **CLI argument mode** (`argparse`) to remove interactive prompts
+- [x] **Custom wordlist support** via CLI flags
+- [x] **CLI argument mode** (`argparse`) to remove interactive prompts
 
 ---
 
