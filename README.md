@@ -23,7 +23,6 @@
 
 - [What is AZeus?](#what-is-azeus)
 - [Current Features](#current-features)
-- [Screenshots](#screenshots)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Roadmap](#roadmap)
@@ -64,25 +63,11 @@ AZeus checks **23 Azure service DNS suffixes** across every major Azure resource
 
 ### 2. Public Blob Container Discovery
 
-If a Blob Storage endpoint is found (`<target>.blob.core.windows.net`), AZeus automatically pivots into **container enumeration mode**:
+When enabled via `-c` / `--containers`, `--container <name>`, or `--all`, AZeus probes the Blob Storage endpoint (`<target>.blob.core.windows.net`) for publicly accessible containers:
 
 - Iterates through a curated **127-word container wordlist** (`wordlist.txt`) targeting common container naming patterns like `backups`, `credentials`, `secrets`, `logs`, `exports`, and more.
 - Probes each container using the Azure Blob Storage REST API (`?restype=container&comp=list`).
 - **Lists all blobs** inside any publicly accessible container, displaying their direct URLs for immediate inspection.
-
-Just a target name.
-
----
-
-## [*] Screenshots
-
-**Banner & startup:**
-
-![AZeus banner](screenshots/img1.png)
-
-**Subdomain enumeration + public blob container discovery:**
-
-![AZeus enumeration output](screenshots/img2.png)
 
 ---
 
@@ -139,7 +124,7 @@ python main.py -t contoso --no-banner
 | `--all` | | Enumerate both subdomains and containers |
 | `--no-banner` | | Suppress the ASCII art banner |
 
-**Example output:**
+**Example output (`python main.py -t contoso --all`):**
 
 ```
 [!] Valid Services and Subdomains
