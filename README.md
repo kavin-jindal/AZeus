@@ -77,7 +77,7 @@ When enabled via `-c` / `--containers`, `--container <name>`, or `--all`, AZeus 
 
 ```bash
 # Clone the repository
-git clone https://github.com/kavin-jindal/AZeus.git
+git clone https://github.com/yourusername/AZeus.git
 cd AZeus
 
 # Install dependencies
