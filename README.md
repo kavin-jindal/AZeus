@@ -6,7 +6,6 @@
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![Platform](https://img.shields.io/badge/Cloud-Microsoft%20Azure%20%7C%20Entra%20ID-0078D4?style=for-the-badge&logo=microsoftazure&logoColor=white)](https://azure.microsoft.com/)
-[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)]()
 
 Fast, modular reconnaissance and enumeration tool for Microsoft Azure and Microsoft Entra ID (Azure AD) attack surface mapping.
 
@@ -32,7 +31,6 @@ Fast, modular reconnaissance and enumeration tool for Microsoft Azure and Micros
   - [6. OAuth 2.0 ROPC Token Endpoint (Active Account Validation)](#6-oauth-20-ropc-token-endpoint-active-account-validation)
 - [Installation](#-installation)
 - [Example Workflows](#-example-workflows)
-- [License](#-license)
 
 ---
 
@@ -58,6 +56,8 @@ Fast, modular reconnaissance and enumeration tool for Microsoft Azure and Micros
 ```text
 usage: main.py [-h] [-S TENANT] [-B TENANT] [-T TENANT] [-u DOMAIN] [-U PATH] [-p PASSWORD] [-P PATH]
 
+AZeus - Azure & Microsoft Entra ID Reconnaissance Tool
+
 options:
   -h, --help            Show this help message and exit
   -S TENANT, --subdomain TENANT
@@ -74,6 +74,16 @@ options:
                         Enumerate a user account on a tenant with password
   -P PATH, --passlist PATH
                         Path to password wordlist
+
+examples:
+  python main.py -S contoso
+  python main.py -B contoso
+  python main.py -T contoso.com
+  python main.py -u user@contoso.com
+  python main.py -U users.txt
+  python main.py -u user@contoso.com -p "Password123!"
+  python main.py -U users.txt -p "Autumn2024!"
+  python main.py -u admin@contoso.com -P passlist.txt
 ```
 
 ---
@@ -259,15 +269,3 @@ python main.py -U users.txt -p "Autumn2024!"
 ```bash
 python main.py -u admin@contoso.com -P passlist.txt
 ```
-
----
-
-## [!] License
-
-Distributed under the MIT License. See `LICENSE` for more information.
-
-<div align="center">
-
-Crafted by **[Kavin Jindal](https://github.com/kavin-jindal)**
-
-</div>
