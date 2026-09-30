@@ -1,6 +1,7 @@
 import argparse
 import socket
 import sys
+import time
 import random
 import xml.etree.ElementTree as ET
 from urllib.parse import urlparse
@@ -50,9 +51,25 @@ AZURE_DNS = {
 }
 
 def parse_arguments():
-    parser = argparse.ArgumentParser()
+    epilog_examples = """
+examples:
+  python main.py -S contoso
+  python main.py -B contoso
+  python main.py -T contoso.com
+  python main.py -u user@contoso.com
+  python main.py -U users.txt
+  python main.py -u user@contoso.com -p "Password123!"
+  python main.py -U users.txt -p "Autumn2024!"
+  python main.py -u admin@contoso.com -P passlist.txt
+"""
+    parser = argparse.ArgumentParser(
+        description="AZeus - Azure & Microsoft Entra ID Reconnaissance Tool",
+        epilog=epilog_examples,
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+    )
     if len(sys.argv) == 1:
-        parser.error("no arguments provided")
+        parser.print_help(sys.stderr)
+        sys.exit(1)
     parser.add_argument("-S", '--subdomain', metavar="TENANT", help="Enumerate services and subdomains for a tenant")
     parser.add_argument("-B", '--blob', metavar="TENANT", help='Enumerate Blob Containers')
     parser.add_argument("-T", '--tenant', metavar="TENANT", help="Enumerate tenant metadata and OpenID configuration")
@@ -357,8 +374,10 @@ def enumerate_userlist(filepath):
         return
 
     print(f"\n\t{YELLOW}[!] Enumerating {len(users)} users from {filepath}{RESET}")
-    for user in users:
+    for i, user in enumerate(users):
         enumerate_username(user)
+        if i < len(users) - 1:
+            time.sleep(random.uniform(0.5, 1.5))
 def enumerate_subdomains(target):
     valid_resource = {}
     for service, suffix in AZURE_DNS.items():
@@ -501,8 +520,10 @@ def enumerate_account_userlist(userlist, password):
         return
 
     print(f"\n\t{YELLOW}[!] Enumerating {len(users)} accounts from {userlist} with password spray{RESET}")
-    for user in users:
+    for i, user in enumerate(users):
         enumerate_account(user, password)
+        if i < len(users) - 1:
+            time.sleep(random.uniform(1.5, 3.5))
 
 
 def enumerate_account_passlist(username, passlist):
@@ -514,11 +535,13 @@ def enumerate_account_passlist(username, passlist):
         return
 
     print(f"\n\t{YELLOW}[!] Spraying {len(passwords)} passwords against account: {username}{RESET}")
-    for pwd in passwords:
+    for i, pwd in enumerate(passwords):
         result = enumerate_account(username, pwd)
         # If valid credentials or account locked, stop spraying
         if result.get("success") or result.get("code") in [50053, 50076, 50079]:
             break
+        if i < len(passwords) - 1:
+            time.sleep(random.uniform(2.0, 4.5))
 
 def main():
     print_banner()
